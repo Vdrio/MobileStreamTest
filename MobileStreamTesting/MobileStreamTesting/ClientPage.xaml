@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:forms="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+			 x:Class="MobileStreamTesting.ClientPage">
+	<StackLayout>
+		<!-- Place new controls here -->
+		<Grid VerticalOptions="FillAndExpand">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*"/>
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+			<forms:SKCanvasView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+								PaintSurface="OnCanvasViewPaintSurface" x:Name="CanvasView"/>
+		</Grid>
+		<Button HorizontalOptions="FillAndExpand" Text="Refresh" Clicked="RefreshStream"/>
+		<!--<StackLayout Orientation="Horizontal">
+			<Label Text="Jpeg Quality: " x:Name="QualityLabel" />
+		</StackLayout>
+		<StackLayout Orientation="Horizontal">
+			<Label Text="Jpeg Resolution: " x:Name="ResolutionLabel"/>
+		</StackLayout>
+		<Label Text="Download Speed: " x:Name="DownloadSpeedLabel"/>-->
+	</StackLayout>
+
+</ContentPage>

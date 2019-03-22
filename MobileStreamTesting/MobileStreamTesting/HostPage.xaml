@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+			 xmlns:camera="clr-namespace:MobileStreamTesting.CameraPrev"
+			 xmlns:skiasharp="clr-namespace:SkiaSharp;assembly=SkiaSharp"
+			 xmlns:forms1="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+			 x:Class="MobileStreamTesting.HostPage">
+	<StackLayout>
+		<!-- Place new controls here -->
+		<Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="PreviewGrid">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*"/>
+			</Grid.RowDefinitions>
+			<camera:CameraPreview x:Name="CameraPreviewView" Camera="Rear"
+								  BackgroundColor="Black" Margin="0" Grid.Row="0" Grid.Column="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+			<forms1:SKCanvasView VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" 
+							 PaintSurface="OnCanvasViewPaintSurface" x:Name="PreviewCanvas" Grid.Row="0" Grid.Column="0"/>
+		</Grid>
+		<Switch HorizontalOptions="CenterAndExpand" IsToggled="True" Toggled="PlayToggled" IsVisible="False"/>
+		<StackLayout Orientation="Horizontal">
+			<Button Text="Previous" HorizontalOptions="FillAndExpand" Clicked="GetPrevFrame" IsVisible="False"/>
+			<Button Text="Switch Camera" HorizontalOptions="FillAndExpand" Clicked="GetNextFrame"/>
+		</StackLayout>
+		<StackLayout Orientation="Horizontal" IsVisible="False">
+			<Label Text="Jpeg Quality: " x:Name="QualityLabel" />
+		</StackLayout>
+		<StackLayout Orientation="Horizontal" IsVisible="False">
+			<Label Text="Jpeg Resolution: " x:Name="ResolutionLabel"/>
+		</StackLayout>
+		<Label Text="Upload Speed: " x:Name="UploadSpeedLabel" IsVisible="False"/>
+	</StackLayout>
+
+</ContentPage>

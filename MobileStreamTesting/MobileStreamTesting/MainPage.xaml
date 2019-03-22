@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MobileStreamTesting"
+			 xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+			 x:Class="MobileStreamTesting.MainPage">
+
+    <StackLayout>
+        <!-- Place new controls here -->
+		<Grid HeightRequest="500">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*"/>
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+			<forms:CachedImage x:Name="BackgroundImage" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0" HeightRequest="500" WidthRequest="500"/>
+			<forms:CachedImage x:Name="PreviewImage" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0" HeightRequest="500" WidthRequest="500"/>
+		</Grid>
+		<StackLayout Orientation="Horizontal">
+			<Button Text="Previous" HorizontalOptions="FillAndExpand" Clicked="GetPrevFrame"/>
+			<Button Text="Next" HorizontalOptions="FillAndExpand" Clicked="GetNextFrame"/>
+		</StackLayout>
+		<StackLayout Orientation="Horizontal">
+			<Label Text="Jpeg Quality: " x:Name="QualityLabel" />
+			<Entry x:Name="QualityEntry" WidthRequest="40"/>
+			<Button Text="Change" Clicked="JpegQualityChanged"/>
+		</StackLayout>
+		<StackLayout Orientation="Horizontal">
+			<Label Text="Jpeg Resolution: " x:Name="ResolutionLabel"/>
+			<Entry x:Name="ResolutionEntry" WidthRequest="40"/>
+			<Button Text="Change" Clicked="JpegResolutionChanged"/>
+		</StackLayout>
+		<Button Text="ResetImage" Clicked="ResetImage"/>
+	</StackLayout>
+
+</ContentPage>
