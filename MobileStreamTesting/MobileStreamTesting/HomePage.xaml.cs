@@ -29,5 +29,9 @@ namespace MobileStreamTesting
         {
             App.Current.MainPage.Navigation.PushAsync(new MainPage());
         }
+        private void VideoChatClicked(object sender, EventArgs e)
+        {
+            App.Current.MainPage.Navigation.PushAsync(new VideoChatPage());
+        }
     }
 }

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:camera="clr-namespace:MobileStreamTesting.CameraPrev"
+			 xmlns:forms1="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+			 x:Class="MobileStreamTesting.VideoChatPage">
+    <ContentPage.Content>
+        <StackLayout>
+			<Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="0"/>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*" x:Name="PreviewColumn"/>
+					<ColumnDefinition Width="5"/>
+				</Grid.ColumnDefinitions>
+				<Grid.RowDefinitions>
+					<RowDefinition Height="0"/>
+					<RowDefinition Height="*"/>
+					<RowDefinition Height="*"/>
+					<RowDefinition Height="*"/>
+					<RowDefinition Height="*"/>
+					<RowDefinition Height="*" x:Name="PreviewRow"/>
+					<RowDefinition Height="5"/>
+				</Grid.RowDefinitions>
+				<forms1:SKCanvasView VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" 
+							 PaintSurface="OnCanvasViewPaintSurfaceClient" x:Name="ClientCanvas" 
+									 Grid.Row="0" Grid.Column="0" Grid.RowSpan="7" Grid.ColumnSpan="7"/>
+				<Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="PreviewGrid" Grid.Row="5" Grid.Column="5">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*"/>
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="*"/>
+					</Grid.RowDefinitions>
+					<camera:CameraPreview x:Name="CameraPreviewView" Camera="Rear"
+								  BackgroundColor="Black" Margin="0" Grid.Row="0" Grid.Column="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+					<forms1:SKCanvasView VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" 
+							 PaintSurface="OnCanvasViewPaintSurface" x:Name="PreviewCanvas" Grid.Row="0" Grid.Column="0"/>
+				</Grid>
+			</Grid>
+		</StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -6,6 +6,7 @@
         <StackLayout>
 			<Button Text="Host" Clicked="HostClicked"/>
 			<Button Text="Client" Clicked="ClientClicked"/>
+			<Button Text="Video Chat" Clicked ="VideoChatClicked"/>
 			<Button Text="Image Resize" Clicked ="ImageResizeClicked"/>
 		</StackLayout>
     </ContentPage.Content>

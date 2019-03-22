@@ -94,12 +94,20 @@ namespace MobileStreamTesting.UDPServer
             int frame = buffer.ReadInteger();
             SKBitmap msg = buffer.ReadJpegToBitmap(data.Length - 8);
             buffer.Dispose();
-            if (ClientPage.canvasView != null && frame > ClientPage.frame)
+            if ((App.Current.MainPage as NavigationPage).CurrentPage is ClientPage)
             {
-                ClientPage.clientPage.CameraPreview = msg;
-                //ClientPage.canvasView.InvalidateSurface();
-                //ClientPage.previewImage.CacheDuration = TimeSpan.FromSeconds(5);
+                if (ClientPage.canvasView != null && frame > ClientPage.frame)
+                {
+                    ClientPage.clientPage.CameraPreview = msg;
+                    //ClientPage.canvasView.InvalidateSurface();
+                    //ClientPage.previewImage.CacheDuration = TimeSpan.FromSeconds(5);
+                    ClientPage.frame = frame;
+                }
+            }
+            else if ((App.Current.MainPage as NavigationPage).CurrentPage is VideoChatPage)
+            {
                 ClientPage.frame = frame;
+                VideoChatPage.videoChatPage.CameraClientPreview = msg;
             }
             //System.Diagnostics.Debug.WriteLine("Successfully loaded image");
         }

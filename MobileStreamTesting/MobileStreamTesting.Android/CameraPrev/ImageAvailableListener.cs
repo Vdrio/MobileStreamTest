@@ -4,6 +4,7 @@ using MobileStreamTesting.ImageCorrection;
 using SkiaSharp;
 using System;
 using System.Diagnostics;
+using Xamarin.Forms;
 
 namespace MobileStreamTesting.Droid.CameraPrev
 {
@@ -13,7 +14,7 @@ namespace MobileStreamTesting.Droid.CameraPrev
 
         public void OnImageAvailable(ImageReader reader)
         {
-            Image image = null;
+            Android.Media.Image image = null;
 
             try
             {
@@ -44,10 +45,15 @@ namespace MobileStreamTesting.Droid.CameraPrev
         public async static void SetBitmapImage(byte[] jpeg)
         {
             SKBitmap bitmap = SKBitmap.Decode(jpeg);
-            if (HostPage.hostPage != null)
+            if ((App.Current.MainPage as NavigationPage).CurrentPage is HostPage)
             {
                 HostPage.hostPage.CameraPreview = bitmap;
                 
+            }
+            else if ((App.Current.MainPage as NavigationPage).CurrentPage is VideoChatPage)
+            {
+                VideoChatPage.videoChatPage.CameraPreview = bitmap;
+
             }
         }
 

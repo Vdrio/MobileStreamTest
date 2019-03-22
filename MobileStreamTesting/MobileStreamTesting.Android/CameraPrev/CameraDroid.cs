@@ -17,6 +17,7 @@ using Size = Android.Util.Size;
 using System.Collections;
 using System.Linq;
 using MobileStreamTesting.CameraPrev;
+using Xamarin.Forms;
 
 namespace MobileStreamTesting.Droid.CameraPrev
 {
@@ -80,7 +81,14 @@ namespace MobileStreamTesting.Droid.CameraPrev
         public CameraDroid(Context context) : base(context)
         {
             _context = context;
-            UsingFrontCamera = HostPage.hostPage.CameraIsFront;
+            if ((App.Current.MainPage as NavigationPage).CurrentPage is HostPage)
+            {
+                UsingFrontCamera = HostPage.hostPage.CameraIsFront;
+            }
+            else if ((App.Current.MainPage as NavigationPage).CurrentPage is VideoChatPage)
+            {
+                UsingFrontCamera = VideoChatPage.videoChatPage.CameraIsFront;
+            }
             ActiveCamera = this;
             App.cameraPreview = this;
             var inflater = LayoutInflater.FromContext(context);

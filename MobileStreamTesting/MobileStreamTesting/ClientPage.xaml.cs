@@ -33,7 +33,7 @@ namespace MobileStreamTesting
             canvasView = CanvasView;
             UDPServer.NetworkDataHandler.InitializeNetworkPackages();
             c = new UDPSocket();
-            s = new UDPSocket();
+            //s = new UDPSocket();
             c.Client("71.80.130.81", 8082);
             //c.Client("23.99.224.56", 443);
             //s.Server(GetLocalIP(), ((IPEndPoint)c._socket.LocalEndPoint).Port);
